@@ -1,11 +1,8 @@
-typedef struct{
-	SOCKET comm_socket;
-	int estate;
-}_Socket;
+
 
 typedef struct{
   	WSADATA wsaData;
-  	_Socket SocketState[10];
+  	SOCKET comm_socket;
   	SOCKET conn_socket;
   	struct sockaddr_in server;
   	struct sockaddr_in client;
@@ -18,6 +15,6 @@ typedef struct{
 
 int initDll ();
 ConexionServer conection();
-void waiting(ConexionServer * con1, int contSock);
+void waiting(ConexionServer * con1);
 
 

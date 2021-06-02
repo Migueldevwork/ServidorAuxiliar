@@ -19,13 +19,12 @@ char sending(void* _socket){
   	return *SendBuff;
 };
 
-char receiving(void* _socket){
+/*void receiving(void* _socket){
 	SOCKET *socket = (SOCKET *)_socket;
 	char RecvBuff[512];
-	
+	fflush(stdin);
 	printf("Recibiendo Mensaje... \n");
   	recv(*socket,RecvBuff, sizeof(RecvBuff), 0);                     //recv para recibir mensajes enviados por el servidor
   	printf("ENVIADO DESDE SERVIDOR: %s \n", RecvBuff);
   	
-  	return *RecvBuff;
-};
+};*/

@@ -36,7 +36,7 @@ ConexionClient conectionC(){
   memset(&conect.server, 0, sizeof(conect.server)) ;
   memcpy(&conect.server.sin_addr, conect.hp->h_addr, conect.hp->h_length);
   conect.server.sin_family = conect.hp->h_addrtype;
-  conect.server.sin_port = htons(3000);
+  conect.server.sin_port = htons(4000);
   
   
   //server.sin_addr.s_addr=inet_addr("127.0.0.1"); // La ip estará en formato long

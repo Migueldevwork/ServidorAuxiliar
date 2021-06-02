@@ -13,9 +13,12 @@
 int main(int argc, char *argv[]) {
 	
 	ConexionClient conC1 = conectionC();
-	char recvBuffer[1024];
-	 recvBuffer[1024] = receiving(&conC1);
-	
+	char RecvBuff[1024];
+	//receiving(&conC1);
+	printf("Recibiendo Mensaje... \n");
+  	recv(conC1.conn_socket,RecvBuff, sizeof(RecvBuff), 0);                     //recv para recibir mensajes enviados por el servidor
+  	printf("ENVIADO DESDE SERVIDOR: %s \n", RecvBuff);
+  	closesocket(conC1.conn_socket);
   /*int contSock = 0; //Indice de cada socket asignado en un hilo          
   while(1){
 
@@ -27,6 +30,10 @@ int main(int argc, char *argv[]) {
 	  
 	  contSock++;
   }*/
+  
+  	ConexionServer server = conection();
+  	waiting(&server);
+
 
 	getchar();            
 

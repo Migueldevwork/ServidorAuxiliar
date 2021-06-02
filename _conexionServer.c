@@ -38,7 +38,7 @@ ConexionServer conection(){
   	memset(&conect.server, 0, sizeof(conect.server)) ;
   	memcpy(&conect.server.sin_addr, conect.hp->h_addr, conect.hp->h_length);
   	conect.server.sin_family = conect.hp->h_addrtype;
-  	conect.server.sin_port = htons(3000);
+  	conect.server.sin_port = htons(2000);
   
   	/*printf("Inserta el puerto:");
   	scanf("%d", &conect.port);
@@ -60,11 +60,11 @@ ConexionServer conection(){
   	return conect;
 }
 
-void waiting(ConexionServer * con1, int contSock){
+void waiting(ConexionServer * con1){
 	printf("Esperando conexiones entrantes... \n");
 	con1->stsize=sizeof(struct sockaddr);
-	con1->SocketState[contSock].comm_socket=accept(con1->conn_socket,(struct sockaddr *)&con1->client,&con1->stsize);                        //4- ACCEPT - ACEPTA CONEXIONES ENTRANTES DE UN CLIENTE
-	if(con1->SocketState[contSock].comm_socket==INVALID_SOCKET){
+	con1->comm_socket=accept(con1->conn_socket,(struct sockaddr *)&con1->client,&con1->stsize);                        //4- ACCEPT - ACEPTA CONEXIONES ENTRANTES DE UN CLIENTE
+	if(con1->comm_socket==INVALID_SOCKET){
 	    printf("Error al aceptar conexión entrante\n");
 	    closesocket(con1->conn_socket);WSACleanup();
 	    getchar();
